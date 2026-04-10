@@ -2,63 +2,86 @@ import Link from 'next/link';
 import Logo from './Logo';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-primary text-white">
+    <footer className="bg-charcoal text-white/80">
       <div className="container-custom section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           {/* Brand */}
-          <div className="md:col-span-1">
-            <Logo className="h-10 w-auto mb-4" color="#FFFFFF" />
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Premium leather manufacturing for brands that demand excellence. 15+ years of craftsmanship.
+          <div className="md:col-span-4">
+            <Logo className="h-10 w-auto mb-6" color="#FDFBF7" />
+            <p className="text-white/50 text-sm leading-relaxed max-w-xs">
+              Premium leather manufacturing for brands that demand excellence. 
+              15+ years of craftsmanship, serving 500+ global partners.
             </p>
           </div>
 
-          {/* Products */}
-          <div>
-            <h4 className="font-heading text-lg mb-4 text-accent">Products</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><Link href="#" className="hover:text-white transition-colors">Leather Jackets</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Leather Bags</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Custom Orders</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">White Label</Link></li>
+          {/* Navigation */}
+          <div className="md:col-span-2">
+            <h4 className="text-[11px] uppercase tracking-[0.2em] text-accent mb-6">Navigate</h4>
+            <ul className="space-y-3">
+              {['About', 'Gallery', 'Manufacturing'].map((item) => (
+                <li key={item}>
+                  <Link 
+                    href={`/${item.toLowerCase()}`} 
+                    className="text-sm text-white/50 hover:text-white transition-colors duration-300"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Company */}
-          <div>
-            <h4 className="font-heading text-lg mb-4 text-accent">Company</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><Link href="#about" className="hover:text-white transition-colors">About Us</Link></li>
-              <li><Link href="#process" className="hover:text-white transition-colors">Our Process</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Quality Assurance</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Sustainability</Link></li>
+          {/* Products */}
+          <div className="md:col-span-2">
+            <h4 className="text-[11px] uppercase tracking-[0.2em] text-accent mb-6">Products</h4>
+            <ul className="space-y-3">
+              {['Leather Jackets', 'Leather Bags', 'Custom Orders', 'White Label'].map((item) => (
+                <li key={item}>
+                  <Link 
+                    href="/gallery" 
+                    className="text-sm text-white/50 hover:text-white transition-colors duration-300"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact */}
-          <div>
-            <h4 className="font-heading text-lg mb-4 text-accent">Contact</h4>
-            <ul className="space-y-2 text-gray-400">
+          <div className="md:col-span-4">
+            <h4 className="text-[11px] uppercase tracking-[0.2em] text-accent mb-6">Get in Touch</h4>
+            <ul className="space-y-3 text-sm text-white/50">
               <li>wholesale@arcten.com</li>
               <li>+1 (555) 123-4567</li>
-              <li className="pt-2">
-                <Link href="#quote" className="text-accent hover:text-white transition-colors font-medium">
-                  Request a Quote →
-                </Link>
-              </li>
             </ul>
+            <Link 
+              href="/#quote" 
+              className="inline-flex items-center gap-2 mt-6 text-sm font-medium text-accent 
+                       hover:text-white transition-colors duration-300 group"
+            >
+              <span>Request a Quote</span>
+              <svg 
+                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
+                fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} ARCTen. All rights reserved.
+        <div className="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-white/30 text-xs">
+            © {currentYear} ARCTen Leather Manufacturing. All rights reserved.
           </p>
-          <div className="flex gap-6 text-gray-500 text-sm">
-            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+          <div className="flex gap-8 text-white/30 text-xs">
+            <Link href="#" className="hover:text-white/60 transition-colors duration-300">Privacy</Link>
+            <Link href="#" className="hover:text-white/60 transition-colors duration-300">Terms</Link>
           </div>
         </div>
       </div>

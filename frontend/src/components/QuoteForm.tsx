@@ -32,7 +32,7 @@ export default function QuoteForm() {
     setStatus('loading');
 
     try {
-      const response = await fetch('http://localhost:5000/api/quote-request', {
+      const response = await fetch('http://localhost:5001/api/quote-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -63,23 +63,32 @@ export default function QuoteForm() {
 
   if (status === 'success') {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
-        <svg className="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-        </svg>
-        <h3 className="font-heading text-2xl text-primary mb-2">Quote Request Received</h3>
-        <p className="text-muted">{message}</p>
+      <div className="text-center py-12">
+        <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-sage/20 flex items-center justify-center">
+          <svg className="w-10 h-10 text-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h3 className="font-heading text-2xl text-charcoal mb-3">Quote Request Received</h3>
+        <p className="text-charcoal/60 max-w-md mx-auto">{message}</p>
       </div>
     );
   }
+
+  const inputClasses = `
+    w-full px-5 py-4 bg-stone/30 border-0 rounded-2xl
+    text-charcoal placeholder:text-charcoal/40
+    transition-all duration-300 ease-out-expo
+    focus:bg-white focus:ring-2 focus:ring-accent/20 focus:outline-none
+  `;
+
+  const labelClasses = "block text-sm font-medium text-charcoal/70 mb-2";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="companyName" className="block text-sm font-medium text-text mb-2">
-            Company Name *
-          </label>
+          <label htmlFor="companyName" className={labelClasses}>Company Name</label>
           <input
             type="text"
             id="companyName"
@@ -87,15 +96,13 @@ export default function QuoteForm() {
             value={formData.companyName}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+            className={inputClasses}
             placeholder="Your Company"
           />
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-text mb-2">
-            Business Email *
-          </label>
+          <label htmlFor="email" className={labelClasses}>Business Email</label>
           <input
             type="email"
             id="email"
@@ -103,15 +110,13 @@ export default function QuoteForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+            className={inputClasses}
             placeholder="you@company.com"
           />
         </div>
 
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-text mb-2">
-            Phone Number *
-          </label>
+          <label htmlFor="phone" className={labelClasses}>Phone Number</label>
           <input
             type="tel"
             id="phone"
@@ -119,24 +124,22 @@ export default function QuoteForm() {
             value={formData.phone}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+            className={inputClasses}
             placeholder="+1 (555) 000-0000"
           />
         </div>
 
         <div>
-          <label htmlFor="productInterest" className="block text-sm font-medium text-text mb-2">
-            Product Interest *
-          </label>
+          <label htmlFor="productInterest" className={labelClasses}>Product Interest</label>
           <select
             id="productInterest"
             name="productInterest"
             value={formData.productInterest}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all bg-white"
+            className={`${inputClasses} cursor-pointer`}
           >
-            <option value="">Select a product category</option>
+            <option value="">Select a category</option>
             <option value="leather-jackets">Leather Jackets</option>
             <option value="leather-bags">Leather Bags</option>
             <option value="both">Both Jackets & Bags</option>
@@ -146,16 +149,14 @@ export default function QuoteForm() {
       </div>
 
       <div>
-        <label htmlFor="estimatedQuantity" className="block text-sm font-medium text-text mb-2">
-          Estimated Quantity *
-        </label>
+        <label htmlFor="estimatedQuantity" className={labelClasses}>Estimated Quantity</label>
         <select
           id="estimatedQuantity"
           name="estimatedQuantity"
           value={formData.estimatedQuantity}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all bg-white"
+          className={`${inputClasses} cursor-pointer`}
         >
           <option value="">Select quantity range</option>
           <option value="50-100">50 - 100 units</option>
@@ -167,22 +168,20 @@ export default function QuoteForm() {
       </div>
 
       <div>
-        <label htmlFor="additionalNotes" className="block text-sm font-medium text-text mb-2">
-          Additional Notes
-        </label>
+        <label htmlFor="additionalNotes" className={labelClasses}>Additional Notes</label>
         <textarea
           id="additionalNotes"
           name="additionalNotes"
           value={formData.additionalNotes}
           onChange={handleChange}
           rows={4}
-          className="w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all resize-none"
-          placeholder="Tell us about your project requirements, customization needs, timeline, etc."
+          className={`${inputClasses} resize-none`}
+          placeholder="Tell us about your project requirements, customization needs, timeline..."
         />
       </div>
 
       {status === 'error' && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+        <div className="bg-red-50 text-red-700 px-5 py-4 rounded-2xl text-sm">
           {message}
         </div>
       )}
@@ -190,12 +189,19 @@ export default function QuoteForm() {
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full btn-premium justify-center py-4 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {status === 'loading' ? 'Submitting...' : 'Submit Quote Request'}
+        <span>{status === 'loading' ? 'Submitting...' : 'Submit Quote Request'}</span>
+        {status !== 'loading' && (
+          <span className="btn-premium-icon">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </span>
+        )}
       </button>
 
-      <p className="text-sm text-muted text-center">
+      <p className="text-xs text-charcoal/40 text-center">
         We typically respond within 24 business hours.
       </p>
     </form>
