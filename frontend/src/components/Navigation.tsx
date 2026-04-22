@@ -23,7 +23,6 @@ export default function Navigation() {
     { href: '/about', label: 'About' },
     { href: '/gallery', label: 'Gallery' },
     { href: '/manufacturing', label: 'Manufacturing' },
-    { href: '/#quote', label: 'Get a Quote' },
   ];
 
   return (

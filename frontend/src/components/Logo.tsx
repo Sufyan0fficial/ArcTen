@@ -1,60 +1,30 @@
 'use client';
 
+import Image from 'next/image';
+import logoImage from '@/assets/images/new-logo.png';
+
 interface LogoProps {
   className?: string;
   color?: string;
 }
 
-export default function Logo({ className = '', color = '#1A1A1A' }: LogoProps) {
+export default function Logo({ className = '', color }: LogoProps) {
+  const isLightVariant = color === '#FDFBF7' || color === '#FFFFFF' || color === 'white';
+  
   return (
-    <svg
-      viewBox="0 0 200 50"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-label="ARCTen Logo"
-    >
-      {/* Geometric Arc Symbol */}
-      <path
-        d="M5 40 L20 10 L35 40"
-        stroke={color}
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
+    <div className={`flex items-center gap-2 ${className}`}>
+      <Image
+        src={logoImage}
+        alt="ARCTen Logo"
+        width={36}
+        height={36}
+        className={isLightVariant ? 'brightness-0 invert' : ''}
+        priority
       />
-      <path
-        d="M10 30 L20 15 L30 30"
-        stroke="#C4A052"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-      
-      {/* ARCTen Text */}
-      <text
-        x="45"
-        y="35"
-        fontFamily="Playfair Display, serif"
-        fontSize="28"
-        fontWeight="600"
-        fill={color}
-        letterSpacing="3"
-      >
-        ARC
-      </text>
-      <text
-        x="115"
-        y="35"
-        fontFamily="Playfair Display, serif"
-        fontSize="28"
-        fontWeight="400"
-        fill="#8B7355"
-        letterSpacing="3"
-      >
-        Ten
-      </text>
-    </svg>
+      <span className={`font-heading text-xl tracking-wide ${isLightVariant ? 'text-cream' : 'text-charcoal'}`}>
+        <span className="font-semibold">ARC</span>
+        <span className="text-secondary font-normal">Ten</span>
+      </span>
+    </div>
   );
 }

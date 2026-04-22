@@ -1,8 +1,46 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+
+// Import all images
+import img1 from '@/assets/images/alexandr-sadkov-BnG4KWAzt9c-unsplash.jpg';
+import img2 from '@/assets/images/ali-karimiboroujeni-zzKT12IXGfA-unsplash.jpg';
+import img3 from '@/assets/images/amir-soltani-L3XJ-y7w9lI-unsplash.jpg';
+import img4 from '@/assets/images/ana-nichita-IfNYCBwtAL4-unsplash.jpg';
+import img5 from '@/assets/images/aphrodites-daughter-qA2glaGFJlY-unsplash.jpg';
+import img6 from '@/assets/images/bag-hanging-from-furniture-item-indoors.jpg';
+import img7 from '@/assets/images/close-up-elegant-bag.jpg';
+import img8 from '@/assets/images/cord-allman-nadKjcnxSus-unsplash.jpg';
+import img9 from '@/assets/images/dominick-valencia-BMRG3mTtsTU-unsplash.jpg';
+import img10 from '@/assets/images/elijah-crouch-_23LFX1DgL0-unsplash.jpg';
+import img11 from '@/assets/images/front-view-woman-holding-purses.jpg';
+import img12 from '@/assets/images/gabriel-ogulu-LFdeDDqkt54-unsplash.jpg';
+import img13 from '@/assets/images/josephine-messien-EtUpQVWNn4M-unsplash.jpg';
+import img14 from '@/assets/images/juan-boche-vuNG1Jglszk-unsplash.jpg';
+import img15 from '@/assets/images/julia-kicova-rxMyBIxH3qg-unsplash.jpg';
+import img16 from '@/assets/images/latico-leathers-g2UlpYhGUlM-unsplash.jpg';
+import img17 from '@/assets/images/lea-ochel-nsRBbE6-YLs-unsplash.jpg';
+import img18 from '@/assets/images/leonie-giardini-rpUKVRCyceo-unsplash.jpg';
+import img19 from '@/assets/images/luis-olmos-boVc1MK5ooE-unsplash.jpg';
+import img20 from '@/assets/images/maks_d-6VMhmxkuEOU-unsplash.jpg';
+import img21 from '@/assets/images/marcin-kempa-cjUxiJoVzc0-unsplash.jpg';
+import img22 from '@/assets/images/marjan-sadeghi-b_4RWHexTck-unsplash.jpg';
+import img23 from '@/assets/images/micah-tindell-ysu9athq_BU-unsplash.jpg';
+import img24 from '@/assets/images/michael-starkie-cyiIKEgfajs-unsplash.jpg';
+import img25 from '@/assets/images/mont-bold-7FuEauq8cZs-unsplash.jpg';
+import img26 from '@/assets/images/personalgraphic-com-IFlg3kFbR0E-unsplash.jpg';
+import img27 from '@/assets/images/prateek-saxena-oPk4vwSlblE-unsplash.jpg';
+import img28 from '@/assets/images/riccardo-sartori-NOtnpXvJwFk-unsplash.jpg';
+import img29 from '@/assets/images/ryan-snaadt-QX83Ckq15BA-unsplash.jpg';
+import img30 from '@/assets/images/tania-mousinho-3xAELIhEMrI-unsplash.jpg';
+import img31 from '@/assets/images/tania-mousinho-vnPgygm8vkU-unsplash.jpg';
+import img32 from '@/assets/images/vitruvian-badr-mD4i35RFZhU-unsplash.jpg';
+import img33 from '@/assets/images/zahra-Ja33lkJc4JQ-unsplash.jpg';
+
+import { StaticImageData } from 'next/image';
 
 type Category = 'all' | 'jackets' | 'bags';
 
@@ -12,53 +50,47 @@ interface Product {
   category: 'jackets' | 'bags';
   style: string;
   color: string;
-  gradient: string;
+  image: StaticImageData;
+  size: 'normal' | 'tall' | 'wide' | 'large';
 }
 
 const products: Product[] = [
-  // Jackets (20 items)
-  { id: 1, name: 'Classic Biker', category: 'jackets', style: 'Biker', color: 'Black', gradient: 'from-zinc-800 to-zinc-900' },
-  { id: 2, name: 'Vintage Bomber', category: 'jackets', style: 'Bomber', color: 'Brown', gradient: 'from-amber-800 to-amber-950' },
-  { id: 3, name: 'Executive Blazer', category: 'jackets', style: 'Blazer', color: 'Navy', gradient: 'from-slate-700 to-slate-900' },
-  { id: 4, name: 'Moto Racer', category: 'jackets', style: 'Biker', color: 'Cognac', gradient: 'from-orange-800 to-orange-950' },
-  { id: 5, name: 'Aviator Classic', category: 'jackets', style: 'Bomber', color: 'Tan', gradient: 'from-yellow-800 to-yellow-950' },
-  { id: 6, name: 'Urban Edge', category: 'jackets', style: 'Biker', color: 'Charcoal', gradient: 'from-neutral-700 to-neutral-900' },
-  { id: 7, name: 'Heritage Trucker', category: 'jackets', style: 'Trucker', color: 'Whiskey', gradient: 'from-amber-700 to-amber-900' },
-  { id: 8, name: 'Café Racer', category: 'jackets', style: 'Biker', color: 'Oxblood', gradient: 'from-red-900 to-red-950' },
-  { id: 9, name: 'Minimalist Moto', category: 'jackets', style: 'Biker', color: 'Slate', gradient: 'from-gray-600 to-gray-800' },
-  { id: 10, name: 'Shearling Aviator', category: 'jackets', style: 'Bomber', color: 'Chocolate', gradient: 'from-stone-700 to-stone-900' },
-  { id: 11, name: 'Cropped Biker', category: 'jackets', style: 'Biker', color: 'Black', gradient: 'from-zinc-700 to-zinc-950' },
-  { id: 12, name: 'Suede Bomber', category: 'jackets', style: 'Bomber', color: 'Camel', gradient: 'from-yellow-700 to-yellow-900' },
-  { id: 13, name: 'Racing Stripe', category: 'jackets', style: 'Biker', color: 'Black/White', gradient: 'from-neutral-800 to-neutral-950' },
-  { id: 14, name: 'Quilted Moto', category: 'jackets', style: 'Biker', color: 'Forest', gradient: 'from-emerald-900 to-emerald-950' },
-  { id: 15, name: 'Double Rider', category: 'jackets', style: 'Biker', color: 'Black', gradient: 'from-zinc-800 to-black' },
-  { id: 16, name: 'Field Jacket', category: 'jackets', style: 'Field', color: 'Olive', gradient: 'from-lime-900 to-lime-950' },
-  { id: 17, name: 'Perfecto', category: 'jackets', style: 'Biker', color: 'Black', gradient: 'from-neutral-900 to-black' },
-  { id: 18, name: 'Varsity Hybrid', category: 'jackets', style: 'Bomber', color: 'Burgundy', gradient: 'from-rose-900 to-rose-950' },
-  { id: 19, name: 'Distressed Rider', category: 'jackets', style: 'Biker', color: 'Vintage Brown', gradient: 'from-amber-900 to-stone-900' },
-  { id: 20, name: 'Modern Blazer', category: 'jackets', style: 'Blazer', color: 'Espresso', gradient: 'from-stone-800 to-stone-950' },
+  // Jackets
+  { id: 1, name: 'Classic Biker', category: 'jackets', style: 'Biker', color: 'Black', image: img1, size: 'large' },
+  { id: 2, name: 'Vintage Bomber', category: 'jackets', style: 'Bomber', color: 'Brown', image: img2, size: 'normal' },
+  { id: 3, name: 'Executive Blazer', category: 'jackets', style: 'Blazer', color: 'Navy', image: img3, size: 'tall' },
+  { id: 4, name: 'Moto Racer', category: 'jackets', style: 'Biker', color: 'Cognac', image: img4, size: 'normal' },
+  { id: 5, name: 'Aviator Classic', category: 'jackets', style: 'Bomber', color: 'Tan', image: img5, size: 'wide' },
+  { id: 6, name: 'Urban Edge', category: 'jackets', style: 'Biker', color: 'Charcoal', image: img8, size: 'normal' },
+  { id: 7, name: 'Heritage Trucker', category: 'jackets', style: 'Trucker', color: 'Whiskey', image: img9, size: 'tall' },
+  { id: 8, name: 'Café Racer', category: 'jackets', style: 'Biker', color: 'Oxblood', image: img10, size: 'large' },
+  { id: 9, name: 'Minimalist Moto', category: 'jackets', style: 'Biker', color: 'Slate', image: img12, size: 'normal' },
+  { id: 10, name: 'Shearling Aviator', category: 'jackets', style: 'Bomber', color: 'Chocolate', image: img14, size: 'normal' },
+  { id: 11, name: 'Cropped Biker', category: 'jackets', style: 'Biker', color: 'Black', image: img18, size: 'wide' },
+  { id: 12, name: 'Suede Bomber', category: 'jackets', style: 'Bomber', color: 'Camel', image: img19, size: 'normal' },
+  { id: 13, name: 'Racing Stripe', category: 'jackets', style: 'Biker', color: 'Black/White', image: img20, size: 'tall' },
+  { id: 14, name: 'Quilted Moto', category: 'jackets', style: 'Biker', color: 'Forest', image: img24, size: 'normal' },
+  { id: 15, name: 'Double Rider', category: 'jackets', style: 'Biker', color: 'Black', image: img25, size: 'large' },
+  { id: 16, name: 'Field Jacket', category: 'jackets', style: 'Field', color: 'Olive', image: img28, size: 'normal' },
+  { id: 17, name: 'Perfecto', category: 'jackets', style: 'Biker', color: 'Black', image: img29, size: 'normal' },
   
-  // Bags (20 items)
-  { id: 21, name: 'Executive Briefcase', category: 'bags', style: 'Briefcase', color: 'Black', gradient: 'from-zinc-800 to-zinc-900' },
-  { id: 22, name: 'Weekend Duffle', category: 'bags', style: 'Duffle', color: 'Cognac', gradient: 'from-amber-800 to-amber-950' },
-  { id: 23, name: 'Classic Tote', category: 'bags', style: 'Tote', color: 'Tan', gradient: 'from-yellow-800 to-yellow-950' },
-  { id: 24, name: 'Messenger Pro', category: 'bags', style: 'Messenger', color: 'Brown', gradient: 'from-stone-700 to-stone-900' },
-  { id: 25, name: 'Travel Holdall', category: 'bags', style: 'Duffle', color: 'Black', gradient: 'from-neutral-800 to-neutral-950' },
-  { id: 26, name: 'Laptop Sleeve', category: 'bags', style: 'Sleeve', color: 'Navy', gradient: 'from-slate-700 to-slate-900' },
-  { id: 27, name: 'Crossbody Satchel', category: 'bags', style: 'Crossbody', color: 'Burgundy', gradient: 'from-red-900 to-red-950' },
-  { id: 28, name: 'Doctor Bag', category: 'bags', style: 'Doctor', color: 'Oxblood', gradient: 'from-rose-900 to-rose-950' },
-  { id: 29, name: 'Backpack Urban', category: 'bags', style: 'Backpack', color: 'Charcoal', gradient: 'from-gray-700 to-gray-900' },
-  { id: 30, name: 'Slim Portfolio', category: 'bags', style: 'Portfolio', color: 'Black', gradient: 'from-zinc-700 to-zinc-950' },
-  { id: 31, name: 'Weekender XL', category: 'bags', style: 'Duffle', color: 'Whiskey', gradient: 'from-amber-700 to-amber-900' },
-  { id: 32, name: 'Structured Tote', category: 'bags', style: 'Tote', color: 'Camel', gradient: 'from-yellow-700 to-yellow-900' },
-  { id: 33, name: 'Tech Messenger', category: 'bags', style: 'Messenger', color: 'Slate', gradient: 'from-neutral-700 to-neutral-900' },
-  { id: 34, name: 'Garment Carrier', category: 'bags', style: 'Garment', color: 'Black', gradient: 'from-zinc-900 to-black' },
-  { id: 35, name: 'Mini Crossbody', category: 'bags', style: 'Crossbody', color: 'Forest', gradient: 'from-emerald-900 to-emerald-950' },
-  { id: 36, name: 'Bucket Bag', category: 'bags', style: 'Bucket', color: 'Chocolate', gradient: 'from-stone-800 to-stone-950' },
-  { id: 37, name: 'Convertible Pack', category: 'bags', style: 'Backpack', color: 'Olive', gradient: 'from-lime-900 to-lime-950' },
-  { id: 38, name: 'Dopp Kit', category: 'bags', style: 'Toiletry', color: 'Brown', gradient: 'from-amber-900 to-stone-900' },
-  { id: 39, name: 'Camera Bag', category: 'bags', style: 'Camera', color: 'Vintage Tan', gradient: 'from-orange-800 to-orange-950' },
-  { id: 40, name: 'Clutch Folio', category: 'bags', style: 'Clutch', color: 'Black', gradient: 'from-neutral-900 to-black' },
+  // Bags
+  { id: 18, name: 'Executive Briefcase', category: 'bags', style: 'Briefcase', color: 'Black', image: img6, size: 'wide' },
+  { id: 19, name: 'Weekend Duffle', category: 'bags', style: 'Duffle', color: 'Cognac', image: img7, size: 'normal' },
+  { id: 20, name: 'Classic Tote', category: 'bags', style: 'Tote', color: 'Tan', image: img11, size: 'large' },
+  { id: 21, name: 'Messenger Pro', category: 'bags', style: 'Messenger', color: 'Brown', image: img13, size: 'normal' },
+  { id: 22, name: 'Travel Holdall', category: 'bags', style: 'Duffle', color: 'Black', image: img15, size: 'tall' },
+  { id: 23, name: 'Laptop Sleeve', category: 'bags', style: 'Sleeve', color: 'Navy', image: img16, size: 'normal' },
+  { id: 24, name: 'Crossbody Satchel', category: 'bags', style: 'Crossbody', color: 'Burgundy', image: img17, size: 'normal' },
+  { id: 25, name: 'Doctor Bag', category: 'bags', style: 'Doctor', color: 'Oxblood', image: img21, size: 'wide' },
+  { id: 26, name: 'Backpack Urban', category: 'bags', style: 'Backpack', color: 'Charcoal', image: img22, size: 'tall' },
+  { id: 27, name: 'Slim Portfolio', category: 'bags', style: 'Portfolio', color: 'Black', image: img23, size: 'normal' },
+  { id: 28, name: 'Weekender XL', category: 'bags', style: 'Duffle', color: 'Whiskey', image: img26, size: 'large' },
+  { id: 29, name: 'Structured Tote', category: 'bags', style: 'Tote', color: 'Camel', image: img27, size: 'normal' },
+  { id: 30, name: 'Mini Crossbody', category: 'bags', style: 'Crossbody', color: 'Forest', image: img30, size: 'normal' },
+  { id: 31, name: 'Bucket Bag', category: 'bags', style: 'Bucket', color: 'Chocolate', image: img31, size: 'tall' },
+  { id: 32, name: 'Convertible Pack', category: 'bags', style: 'Backpack', color: 'Olive', image: img32, size: 'normal' },
+  { id: 33, name: 'Camera Bag', category: 'bags', style: 'Camera', color: 'Vintage Tan', image: img33, size: 'wide' },
 ];
 
 export default function GalleryPage() {
@@ -75,6 +107,32 @@ export default function GalleryPage() {
     { key: 'jackets', label: 'Jackets', count: products.filter(p => p.category === 'jackets').length },
     { key: 'bags', label: 'Bags', count: products.filter(p => p.category === 'bags').length },
   ];
+
+  const getSizeClasses = (size: string) => {
+    switch (size) {
+      case 'large':
+        return 'col-span-2 row-span-2';
+      case 'tall':
+        return 'row-span-2';
+      case 'wide':
+        return 'col-span-2';
+      default:
+        return '';
+    }
+  };
+
+  const getAspectClass = (size: string) => {
+    switch (size) {
+      case 'large':
+        return 'aspect-square';
+      case 'tall':
+        return 'aspect-[3/5]';
+      case 'wide':
+        return 'aspect-[2/1]';
+      default:
+        return 'aspect-[4/5]';
+    }
+  };
 
   return (
     <div ref={containerRef}>
@@ -123,96 +181,78 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Gallery Grid - Masonry-style Bento */}
+      {/* Gallery Grid */}
       <section className="section-padding">
         <div className="container-custom px-4 md:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {filteredProducts.map((product, i) => {
-              // Create visual variety with different sizes
-              const isLarge = i % 7 === 0;
-              const isMedium = i % 5 === 2;
-              
-              return (
-                <div
-                  key={product.id}
-                  className={`
-                    reveal group cursor-pointer
-                    ${isLarge ? 'col-span-2 row-span-2' : ''}
-                    ${isMedium ? 'md:col-span-2' : ''}
-                  `}
-                  style={{ animationDelay: `${Math.min(i * 50, 500)}ms` }}
-                  onMouseEnter={() => setHoveredId(product.id)}
-                  onMouseLeave={() => setHoveredId(null)}
-                >
-                  <div className="card-shell h-full">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[200px] md:auto-rows-[250px] gap-4 md:gap-5">
+            {filteredProducts.map((product, i) => (
+              <div
+                key={product.id}
+                className={`reveal group cursor-pointer ${getSizeClasses(product.size)}`}
+                style={{ animationDelay: `${Math.min(i * 40, 400)}ms` }}
+                onMouseEnter={() => setHoveredId(product.id)}
+                onMouseLeave={() => setHoveredId(null)}
+              >
+                <div className="card-shell h-full">
+                  <div className="card-inner h-full overflow-hidden relative">
+                    {/* Product Image */}
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className={`
+                        object-cover transition-transform duration-700 ease-out-expo
+                        ${hoveredId === product.id ? 'scale-110' : 'scale-100'}
+                      `}
+                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      placeholder="blur"
+                    />
+
+                    {/* Gradient overlay */}
                     <div className={`
-                      card-inner h-full overflow-hidden
-                      ${isLarge ? 'aspect-square' : isMedium ? 'aspect-[2/1]' : 'aspect-[3/4]'}
-                    `}>
-                      {/* Product Visual */}
+                      absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent
+                      transition-opacity duration-500
+                      ${hoveredId === product.id ? 'opacity-100' : 'opacity-70'}
+                    `} />
+
+                    {/* Content overlay */}
+                    <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-5">
                       <div className={`
-                        absolute inset-0 bg-gradient-to-br ${product.gradient}
-                        transition-transform duration-700 ease-out-expo
-                        ${hoveredId === product.id ? 'scale-105' : 'scale-100'}
+                        transition-transform duration-500 ease-out-expo
+                        ${hoveredId === product.id ? 'translate-y-0' : 'translate-y-1'}
                       `}>
-                        {/* Leather texture overlay */}
-                        <div className="absolute inset-0 opacity-20 mix-blend-overlay"
-                          style={{
-                            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
-                          }}
-                        />
-                        
-                        {/* Product icon/silhouette */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <span className={`
-                            font-heading text-white/10
-                            ${isLarge ? 'text-[120px]' : isMedium ? 'text-[80px]' : 'text-[60px]'}
-                          `}>
-                            {product.category === 'jackets' ? '◆' : '◇'}
-                          </span>
-                        </div>
+                        <span className="text-accent text-[10px] md:text-xs uppercase tracking-wider font-medium">
+                          {product.style} · {product.color}
+                        </span>
+                        <h3 className={`
+                          font-heading text-cream mt-1 leading-tight
+                          ${product.size === 'large' ? 'text-xl md:text-3xl' : 'text-base md:text-xl'}
+                        `}>
+                          {product.name}
+                        </h3>
                       </div>
 
-                      {/* Content overlay */}
+                      {/* Hover action */}
                       <div className={`
-                        absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent
-                        flex flex-col justify-end p-4 md:p-6
-                        transition-opacity duration-500 ease-out-expo
-                        ${hoveredId === product.id ? 'opacity-100' : 'opacity-0 md:opacity-100'}
+                        mt-3 transition-all duration-500 ease-out-expo
+                        ${hoveredId === product.id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}
                       `}>
-                        <div className={`
-                          transition-transform duration-500 ease-out-expo
-                          ${hoveredId === product.id ? 'translate-y-0' : 'translate-y-2'}
-                        `}>
-                          <span className="text-accent/80 text-xs uppercase tracking-wider">
-                            {product.style} · {product.color}
-                          </span>
-                          <h3 className={`
-                            font-heading text-cream mt-1
-                            ${isLarge ? 'text-2xl md:text-3xl' : 'text-lg md:text-xl'}
-                          `}>
-                            {product.name}
-                          </h3>
-                        </div>
-
-                        {/* Hover action */}
-                        <div className={`
-                          mt-4 transition-all duration-500 ease-out-expo
-                          ${hoveredId === product.id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
-                        `}>
-                          <span className="inline-flex items-center gap-2 text-sm text-cream/80 font-medium">
-                            <span>Request Sample</span>
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                          </span>
-                        </div>
+                        <Link 
+                          href="/#quote"
+                          className="inline-flex items-center gap-2 text-xs md:text-sm text-cream/90 font-medium
+                                   hover:text-accent transition-colors"
+                        >
+                          <span>Request Sample</span>
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </Link>
                       </div>
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -229,7 +269,7 @@ export default function GalleryPage() {
               We specialize in custom designs. Share your vision and we&apos;ll bring it to life 
               with the same premium quality and attention to detail.
             </p>
-            <Link href="/#quote" className="reveal stagger-3 btn-premium bg-accent text-charcoal hover:bg-cream inline-flex">
+            <Link href="/#quote" className="reveal stagger-3 btn-premium bg-accent text-charcoal hover:bg-cream inline-flex group">
               <span>Request Custom Quote</span>
               <span className="btn-premium-icon bg-charcoal/10">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

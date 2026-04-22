@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import certificationImage from '@/assets/images/riccardo-sartori-NOtnpXvJwFk-unsplash.jpg';
 
 export default function ManufacturingPage() {
   const containerRef = useScrollReveal();
@@ -226,11 +228,15 @@ export default function ManufacturingPage() {
 
             <div className="reveal stagger-2">
               <div className="image-shell">
-                <div className="image-inner aspect-square bg-gradient-to-br from-accent/20 to-secondary/20 flex items-center justify-center">
-                  <div className="text-center">
-                    <span className="font-heading text-8xl text-charcoal/10">QC</span>
-                    <p className="text-charcoal/30 text-sm mt-2">47-Point Inspection</p>
-                  </div>
+                <div className="image-inner aspect-square relative overflow-hidden">
+                  <Image
+                    src={certificationImage}
+                    alt="Quality craftsmanship at ARCTen"
+                    fill
+                    className="object-cover"
+                    placeholder="blur"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
                 </div>
               </div>
             </div>

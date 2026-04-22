@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import missionImage from '@/assets/images/micah-tindell-ysu9athq_BU-unsplash.jpg';
 
 export default function AboutPage() {
   const containerRef = useScrollReveal();
@@ -72,8 +73,15 @@ export default function AboutPage() {
             </div>
             <div className="reveal stagger-2">
               <div className="image-shell bg-white/5">
-                <div className="image-inner aspect-[4/5] bg-gradient-to-br from-secondary/20 to-accent/20 flex items-center justify-center">
-                  <span className="font-heading text-6xl text-cream/20">ARCTen</span>
+                <div className="image-inner aspect-[4/5] relative overflow-hidden">
+                  <Image
+                    src={missionImage}
+                    alt="Leather craftsmanship at ARCTen"
+                    fill
+                    className="object-cover"
+                    placeholder="blur"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
                 </div>
               </div>
             </div>
