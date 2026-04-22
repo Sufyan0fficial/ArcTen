@@ -14,7 +14,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3001' || 'http://localhost:3000',
+  origin: [process.env.FRONTEND_URL,'http://localhost:3001','http://localhost:3000'],
   credentials: true,
 }));
 app.use(express.json());
@@ -176,7 +176,7 @@ app.get('/api/admin/quotes', authMiddleware, async (req, res) => {
     if (search) {
       query.$or = [
         { companyName: { $regex: search, $options: 'i' } },
-        { email: { $regex: search, $options: 'i' } },
+        // { email: { $regex: search, $options: 'i' } },
       ];
     }
 
