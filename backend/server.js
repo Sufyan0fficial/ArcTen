@@ -281,7 +281,7 @@ app.get('/api/admin/stats', authMiddleware, async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`ARCTen API running on port ${PORT}`);
 });

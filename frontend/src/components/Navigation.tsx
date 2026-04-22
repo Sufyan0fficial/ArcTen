@@ -20,6 +20,7 @@ export default function Navigation() {
   }, [isMenuOpen]);
 
   const navLinks = [
+    { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
     { href: '/gallery', label: 'Gallery' },
     { href: '/manufacturing', label: 'Manufacturing' },

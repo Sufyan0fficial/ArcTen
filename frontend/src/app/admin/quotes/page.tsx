@@ -291,16 +291,28 @@ export default function QuotesDashboard() {
                         <td className="p-4">
                           <span className="text-sm text-charcoal/50">{formatDate(quote.createdAt)}</span>
                         </td>
-                        <td className="p-4 text-right">
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setDeleteConfirm(quote._id);
-                            }}
-                            className="text-red-500 hover:text-red-700 text-sm"
-                          >
-                            Delete
-                          </button>
+                        <td className="p-4 text-right" onClick={e => e.stopPropagation()}>
+                          <div className="flex items-center justify-end gap-2">
+                            <select
+                              value={quote.status}
+                              onChange={(e) => updateStatus(quote._id, e.target.value)}
+                              className="px-2 py-1.5 text-xs bg-stone/30 border-0 rounded-lg cursor-pointer
+                                       focus:ring-2 focus:ring-accent/20 focus:outline-none"
+                            >
+                              {Object.entries(statusLabels).map(([value, label]) => (
+                                <option key={value} value={value}>{label}</option>
+                              ))}
+                            </select>
+                            <button
+                              onClick={() => setDeleteConfirm(quote._id)}
+                              className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                              title="Delete"
+                            >
+                              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                              </svg>
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -355,19 +367,6 @@ export default function QuotesDashboard() {
                   <p className="text-charcoal text-sm bg-stone/30 p-3 rounded-xl">{selectedQuote.additionalNotes}</p>
                 </div>
               )}
-              <div>
-                <p className="text-xs text-charcoal/50 uppercase tracking-wider mb-2">Status</p>
-                <select
-                  value={selectedQuote.status}
-                  onChange={(e) => updateStatus(selectedQuote._id, e.target.value)}
-                  className="w-full px-4 py-3 bg-stone/30 border-0 rounded-xl text-charcoal cursor-pointer
-                           focus:ring-2 focus:ring-accent/20 focus:outline-none"
-                >
-                  {Object.entries(statusLabels).map(([value, label]) => (
-                    <option key={value} value={value}>{label}</option>
-                  ))}
-                </select>
-              </div>
               <div className="pt-4 border-t border-charcoal/5">
                 <p className="text-xs text-charcoal/40">
                   Submitted on {formatDate(selectedQuote.createdAt)}
