@@ -156,9 +156,9 @@ export default function GalleryPage() {
       </section>
 
       {/* Filter Bar */}
-      <section className="sticky top-20 z-20 py-4 bg-cream/80 backdrop-blur-xl border-y border-charcoal/5">
+      <section className="py-6 bg-cream/80 backdrop-blur-xl border-y border-charcoal/5">
         <div className="container-custom px-4 md:px-8">
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-3">
             {categories.map((cat) => (
               <button
                 key={cat.key}

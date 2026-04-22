@@ -7,6 +7,31 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import jacketImg from '@/assets/jacket.png';
 import bagImg from '@/assets/bag.png';
 
+// Professional SVG Icons - Ultra-light stroke weight
+const icons = {
+  quality: (
+    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+    </svg>
+  ),
+  scale: (
+    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
+    </svg>
+  ),
+  label: (
+    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6z" />
+    </svg>
+  ),
+  delivery: (
+    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+    </svg>
+  ),
+};
+
 export default function Home() {
   const containerRef = useScrollReveal();
 
@@ -14,7 +39,6 @@ export default function Home() {
     <div ref={containerRef}>
       {/* Hero Section */}
       <section className="min-h-[100dvh] flex items-center justify-center relative overflow-hidden pt-24 pb-16">
-        {/* Subtle gradient orbs */}
         <div className="absolute top-1/4 -left-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-secondary/10 rounded-full blur-3xl" />
         
@@ -50,7 +74,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-charcoal/30">
           <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
           <div className="w-px h-12 bg-gradient-to-b from-charcoal/30 to-transparent" />
@@ -90,7 +113,9 @@ export default function Home() {
             {/* Large card */}
             <div className="reveal md:col-span-8 card-shell">
               <div className="card-inner p-8 md:p-12 h-full">
-                <span className="text-accent text-4xl mb-6 block">◆</span>
+                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center text-accent mb-6">
+                  {icons.quality}
+                </div>
                 <h3 className="font-heading text-2xl md:text-3xl text-charcoal mb-4">Uncompromising Quality</h3>
                 <p className="text-charcoal/60 leading-relaxed max-w-lg">
                   Full-grain leather sourced from the finest tanneries, precision stitching by master craftsmen, 
@@ -103,14 +128,18 @@ export default function Home() {
             <div className="reveal stagger-1 md:col-span-4 flex flex-col gap-4">
               <div className="card-shell flex-1">
                 <div className="card-inner p-6 h-full">
-                  <span className="text-accent text-2xl mb-4 block">◈</span>
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent mb-4">
+                    {icons.scale}
+                  </div>
                   <h3 className="font-heading text-xl text-charcoal mb-2">Flexible MOQ</h3>
                   <p className="text-charcoal/60 text-sm">From 50 to 50,000 units. We scale with your needs.</p>
                 </div>
               </div>
               <div className="card-shell flex-1">
                 <div className="card-inner p-6 h-full">
-                  <span className="text-accent text-2xl mb-4 block">◇</span>
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent mb-4">
+                    {icons.label}
+                  </div>
                   <h3 className="font-heading text-xl text-charcoal mb-2">White-Label Ready</h3>
                   <p className="text-charcoal/60 text-sm">Your brand, our craftsmanship. Complete customization.</p>
                 </div>
@@ -120,19 +149,21 @@ export default function Home() {
             {/* Bottom row */}
             <div className="reveal stagger-2 md:col-span-4 card-shell">
               <div className="card-inner p-6 h-full">
-                <span className="text-accent text-2xl mb-4 block">◊</span>
+                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent mb-4">
+                  {icons.delivery}
+                </div>
                 <h3 className="font-heading text-xl text-charcoal mb-2">On-Time Delivery</h3>
                 <p className="text-charcoal/60 text-sm">98.7% on-time delivery rate. Your deadlines are our priority.</p>
               </div>
             </div>
 
             <div className="reveal stagger-3 md:col-span-8 card-shell bg-charcoal/5">
-              <div className="card-inner bg-charcoal p-8 md:p-12 h-full flex items-center justify-between">
+              <div className="card-inner bg-charcoal p-8 md:p-12 h-full flex flex-col sm:flex-row items-center justify-between gap-6">
                 <div>
                   <h3 className="font-heading text-2xl text-cream mb-2">Ready to Partner?</h3>
                   <p className="text-cream/60">Join 500+ brands who trust ARCTen.</p>
                 </div>
-                <Link href="#quote" className="btn-premium bg-accent text-charcoal hover:bg-cream">
+                <Link href="#quote" className="btn-premium bg-accent text-charcoal hover:bg-cream shrink-0">
                   <span>Get Started</span>
                   <span className="btn-premium-icon bg-charcoal/10">
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
