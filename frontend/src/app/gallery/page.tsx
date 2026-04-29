@@ -40,6 +40,8 @@ import img31 from '@/assets/images/tania-mousinho-vnPgygm8vkU-unsplash.jpg';
 import img32 from '@/assets/images/vitruvian-badr-mD4i35RFZhU-unsplash.jpg';
 import img33 from '@/assets/images/zahra-Ja33lkJc4JQ-unsplash.jpg';
 
+import { PiArrowRight } from 'react-icons/pi';
+
 import { StaticImageData } from 'next/image';
 
 type Category = 'all' | 'jackets' | 'bags';
@@ -243,9 +245,7 @@ export default function GalleryPage() {
                                    hover:text-accent transition-colors"
                         >
                           <span>Request Sample</span>
-                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                          </svg>
+                          <PiArrowRight className="w-3.5 h-3.5" />
                         </Link>
                       </div>
                     </div>
@@ -272,9 +272,7 @@ export default function GalleryPage() {
             <Link href="/#quote" className="reveal stagger-3 btn-premium bg-accent text-charcoal hover:bg-cream inline-flex group">
               <span>Request Custom Quote</span>
               <span className="btn-premium-icon bg-charcoal/10">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+                <PiArrowRight className="w-4 h-4" />
               </span>
             </Link>
           </div>

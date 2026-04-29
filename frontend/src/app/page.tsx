@@ -7,30 +7,15 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import jacketImg from '@/assets/jacket.png';
 import bagImg from '@/assets/bag.png';
 
-// Professional SVG Icons - Ultra-light stroke weight
-const icons = {
-  quality: (
-    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
-    </svg>
-  ),
-  scale: (
-    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
-    </svg>
-  ),
-  label: (
-    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6z" />
-    </svg>
-  ),
-  delivery: (
-    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
-    </svg>
-  ),
-};
+// Phosphor Icons - Ultra-light, premium look
+import { 
+  PiSealCheck, 
+  PiChartLineUp, 
+  PiTag, 
+  PiTruck,
+  PiArrowRight,
+  PiArrowUpRight
+} from 'react-icons/pi';
 
 export default function Home() {
   const containerRef = useScrollReveal();
@@ -59,12 +44,10 @@ export default function Home() {
             </p>
             
             <div className="reveal stagger-3 flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="#quote" className="btn-premium text-base">
+              <Link href="#quote" className="btn-premium text-base group">
                 <span>Request a Wholesale Quote</span>
                 <span className="btn-premium-icon">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
-                  </svg>
+                  <PiArrowUpRight className="w-4 h-4" />
                 </span>
               </Link>
               <Link href="/manufacturing" className="btn-secondary-premium text-base">
@@ -114,7 +97,7 @@ export default function Home() {
             <div className="reveal md:col-span-8 card-shell">
               <div className="card-inner p-8 md:p-12 h-full">
                 <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center text-accent mb-6">
-                  {icons.quality}
+                  <PiSealCheck className="w-8 h-8" />
                 </div>
                 <h3 className="font-heading text-2xl md:text-3xl text-charcoal mb-4">Uncompromising Quality</h3>
                 <p className="text-charcoal/60 leading-relaxed max-w-lg">
@@ -129,7 +112,7 @@ export default function Home() {
               <div className="card-shell flex-1">
                 <div className="card-inner p-6 h-full">
                   <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent mb-4">
-                    {icons.scale}
+                    <PiChartLineUp className="w-6 h-6" />
                   </div>
                   <h3 className="font-heading text-xl text-charcoal mb-2">Flexible MOQ</h3>
                   <p className="text-charcoal/60 text-sm">From 50 to 50,000 units. We scale with your needs.</p>
@@ -138,7 +121,7 @@ export default function Home() {
               <div className="card-shell flex-1">
                 <div className="card-inner p-6 h-full">
                   <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent mb-4">
-                    {icons.label}
+                    <PiTag className="w-6 h-6" />
                   </div>
                   <h3 className="font-heading text-xl text-charcoal mb-2">White-Label Ready</h3>
                   <p className="text-charcoal/60 text-sm">Your brand, our craftsmanship. Complete customization.</p>
@@ -150,7 +133,7 @@ export default function Home() {
             <div className="reveal stagger-2 md:col-span-4 card-shell">
               <div className="card-inner p-6 h-full">
                 <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent mb-4">
-                  {icons.delivery}
+                  <PiTruck className="w-6 h-6" />
                 </div>
                 <h3 className="font-heading text-xl text-charcoal mb-2">On-Time Delivery</h3>
                 <p className="text-charcoal/60 text-sm">98.7% on-time delivery rate. Your deadlines are our priority.</p>
@@ -163,12 +146,10 @@ export default function Home() {
                   <h3 className="font-heading text-2xl text-cream mb-2">Ready to Partner?</h3>
                   <p className="text-cream/60">Join 500+ brands who trust ARCTen.</p>
                 </div>
-                <Link href="#quote" className="btn-premium bg-accent text-charcoal hover:bg-cream shrink-0">
+                <Link href="#quote" className="btn-premium bg-accent text-charcoal hover:bg-cream shrink-0 group">
                   <span>Get Started</span>
                   <span className="btn-premium-icon bg-charcoal/10">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                    <PiArrowRight className="w-4 h-4" />
                   </span>
                 </Link>
               </div>
@@ -214,9 +195,7 @@ export default function Home() {
                                  transition-all duration-300 group-hover:gap-3"
                       >
                         <span>View Collection</span>
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
+                        <PiArrowRight className="w-4 h-4" />
                       </Link>
                     </div>
                   </div>
@@ -255,12 +234,10 @@ export default function Home() {
           </div>
 
           <div className="reveal stagger-4 text-center mt-16">
-            <Link href="/manufacturing" className="btn-premium bg-cream text-charcoal hover:bg-accent">
+            <Link href="/manufacturing" className="btn-premium bg-cream text-charcoal hover:bg-accent group">
               <span>See Full Process</span>
               <span className="btn-premium-icon bg-charcoal/10">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+                <PiArrowRight className="w-4 h-4" />
               </span>
             </Link>
           </div>
